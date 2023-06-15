@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+    <UserSecretsId>aspnet-CoolEvents.WebApp-78038802-56d2-4db6-a27c-4a742f9c9eb0</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoolEvents.Data.EF.SqlServer\CoolEvents.Data.EF.SqlServer.csproj" />
+    <ProjectReference Include="..\CoolEvents.Data.EF\CoolEvents.Data.EF.csproj" />
+    <ProjectReference Include="..\CoolEvents.Service.Models\CoolEvents.Service.Models.csproj" />
+    <ProjectReference Include="..\CoolEvents.Service\CoolEvents.Service.csproj" />
+  </ItemGroup>
+
+</Project>
