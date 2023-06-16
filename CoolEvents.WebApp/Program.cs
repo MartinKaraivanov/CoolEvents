@@ -1,5 +1,5 @@
 using CoolEvents.Data.EF;
-using CoolEvents.WebApp.Data;
+using CoolEvents.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +13,7 @@ builder.Services.AddDbContext<CoolEventsDbContext>(options =>
         x => x.MigrationsAssembly(typeof(CoolEvents.Data.EF.SqlServer.DummyClass).Assembly.GetName().Name)));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<CoolEventsDbContext>();
 builder.Services.AddRazorPages();
 
