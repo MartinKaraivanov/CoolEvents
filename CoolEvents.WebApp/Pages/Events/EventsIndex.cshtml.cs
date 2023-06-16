@@ -1,9 +1,11 @@
 using CoolEvents.Service.Models;
 using CoolEvents.Service;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoolEvents.WebApp.Pages.Events;
 
+[Authorize(Roles = "Admin")]
 public class EventsIndexModel : PageModel
 {
     private readonly IEventsService _eventsService;

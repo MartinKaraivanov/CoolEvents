@@ -2,9 +2,11 @@ using CoolEvents.Service.Models;
 using CoolEvents.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoolEvents.WebApp.Pages.Events;
 
+[Authorize]
 public class DeleteEventModel : PageModel
 {
     private readonly IEventsService _eventsService;

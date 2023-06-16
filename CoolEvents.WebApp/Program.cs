@@ -14,6 +14,7 @@ builder.Services.AddDbContext<CoolEventsDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<CoolEventsDbContext>();
 builder.Services.AddRazorPages();
 
