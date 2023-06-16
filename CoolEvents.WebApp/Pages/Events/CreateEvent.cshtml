@@ -20,9 +20,10 @@
 	</div>
 	<div class="pb-2">
 		<label asp-for="Event.PhotoUrl">Photo</label>
-		<input asp-for="Event.PhotoUrl" type="file" required/>
+		<input asp-for="Event.PhotoUrl" type="text" placeholder="Photo URL" required/>
 	</div>
 
-	<button type="submit">Create</button>
-	<a asp-page="./EventsIndex">Back</a>
+	<button type="submit" class="btn success" style="border-color:green; background-color:green; color:white">Create</button>
 </form>
+
+<a asp-page="./EventsIndex">Back</a>

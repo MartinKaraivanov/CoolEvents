@@ -1,0 +1,29 @@
+﻿@page
+@model CoolEvents.WebApp.Pages.Events.EditEventModel
+@{
+}
+
+<h1>Edit Event</h1>
+
+<form method="post">
+	<input asp-for="Event.Id" type="hidden" />
+	<div class="pb-2">
+		<label asp-for="Event.Name">Name</label>
+		<input asp-for="Event.Name" type="text" placeholder="Name" required />
+	</div>
+	<div class="pb-2">
+		<label asp-for="Event.Description">Description</label>
+		<input asp-for="Event.Description" placeholder="Description" required />
+	</div>
+	<div class="pb-2">
+		<label asp-for="Event.Date">Date</label>
+		<input asp-for="Event.Date" type="date" required />
+	</div>
+	<div class="pb-2">
+		<label asp-for="Event.PhotoUrl">Photo</label>
+		<input asp-for="Event.PhotoUrl" type="text" placeholder="Photo URL" required />
+	</div>
+
+	<button type="submit">Update</button>
+	<a asp-page="./EventsIndex">Back</a>
+</form>

@@ -30,9 +30,18 @@ internal class EventsService : IEventsService
         return events.Select(x => x.ToDto());
     }
 
+    public EventDto GetEventById(Guid id)
+    {
+		var e = _eventRepository.RetrieveAll().Where(x => x.Id == id).SingleOrDefault();
+
+        ArgumentNullException.ThrowIfNull(e);
+
+        return e.ToDto();
+	}
+
     public async Task<EventDto> UpdateEventAsync(EventDto eventDto)
     {
-        var @event = _eventRepository.RetrieveAll().SingleOrDefault(x => x.Id == eventDto.Id);
+        var @event = _eventRepository.RetrieveAll().Where(x => x.Id == eventDto.Id).SingleOrDefault();
 
         if (@event == null)
         {

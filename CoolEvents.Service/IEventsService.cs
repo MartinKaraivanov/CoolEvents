@@ -11,6 +11,7 @@ public interface IEventsService
 {
     Task<EventDto> CreateEventAsync(EventDto eventDto);
     IEnumerable<EventDto> GetAllEvents();
+    EventDto GetEventById(Guid id);
     //Task<IEnumerable<EventDto>> GetEventsByNameAsync(string name);
     Task<EventDto> UpdateEventAsync(EventDto eventDto);
     Task DeleteEventAsync(Guid id);
