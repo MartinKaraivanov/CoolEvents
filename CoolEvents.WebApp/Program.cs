@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<CoolEventsDbContext>(options =>
+builder.Services.AddDbContextFactory<CoolEventsDbContext>(options =>
     options.UseSqlServer(
         connectionString,
         x => x.MigrationsAssembly(typeof(CoolEvents.Data.EF.SqlServer.DummyClass).Assembly.GetName().Name)));
@@ -17,6 +17,8 @@ builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireCo
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<CoolEventsDbContext>();
 builder.Services.AddRazorPages();
+
+builder.Services.AddAutoMapper(typeof(CoolEvents.Service.Mappings.MappingProfile));
 
 CoolEvents.Service.ContainerRegistrations.ConfigureServices(builder.Services);
 CoolEvents.Data.EF.ContainerRegistrations.ConfigureServices(builder.Services);

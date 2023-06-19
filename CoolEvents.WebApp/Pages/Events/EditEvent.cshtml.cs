@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoolEvents.WebApp.Pages.Events;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class EditEventModel : PageModel
 {
 	private readonly IEventsService _eventsService;

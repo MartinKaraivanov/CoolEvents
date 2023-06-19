@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoolEvents.WebApp.Pages.Events;
 
-[Authorize(Roles = "Admin")]
+[Authorize]
 public class EventsIndexModel : PageModel
 {
     private readonly IEventsService _eventsService;
@@ -22,5 +22,4 @@ public class EventsIndexModel : PageModel
         Events = _eventsService.GetAllEvents();
 
     }
-
 }

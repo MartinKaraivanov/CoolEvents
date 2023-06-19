@@ -2,46 +2,59 @@
 using CoolEvents.Data.Models;
 using CoolEvents.Service.Models;
 using CoolEvents.Service.Mappings;
+using AutoMapper;
 
 namespace CoolEvents.Service;
 
 internal class EventsService : IEventsService
 {
     private readonly IRepository<Event> _eventRepository;
+    private readonly IMapper _mapper;
 
-    public EventsService(IRepository<Event> eventRepository)
+    public EventsService(IRepository<Event> eventRepository, IMapper mapper)
     {
         _eventRepository = eventRepository;
+        _mapper = mapper;
     }
 
     public async Task<EventDto> CreateEventAsync(EventDto eventDto)
     {
-        Event @event = eventDto.ToEntity();
+        Event @event = new Event
+        {
+            Id = eventDto.Id,
+            Name = eventDto.Name,
+            Description = eventDto.Description,
+            PhotoUrl = eventDto.PhotoUrl,
+            Date = eventDto.Date
+        };
 
         var newEvent = await _eventRepository.AddAsync(@event);
 
-        return newEvent.ToDto();
+        return _mapper.Map<EventDto>(newEvent);
     }
 
     public IEnumerable<EventDto> GetAllEvents()
     {
-        var events = _eventRepository.RetrieveAll().ToList();
+        return _eventRepository.RetrieveMappedTo<EventDto>(x => true);
+    }
 
-        return events.Select(x => x.ToDto());
+    public IEnumerable<EventDto> GetEventsByNamePart(string namePart)
+    {
+        return _eventRepository.RetrieveMappedTo<EventDto>(x => x.Name.Contains(namePart));
     }
 
     public EventDto GetEventById(Guid id)
     {
-		var e = _eventRepository.RetrieveAll().Where(x => x.Id == id).SingleOrDefault();
+		var e = _eventRepository.RetrieveMappedTo<EventDto>(x => x.Id == id).SingleOrDefault();
 
         ArgumentNullException.ThrowIfNull(e);
 
-        return e.ToDto();
+        return e;
 	}
 
     public async Task<EventDto> UpdateEventAsync(EventDto eventDto)
     {
-        var @event = _eventRepository.RetrieveAll().Where(x => x.Id == eventDto.Id).SingleOrDefault();
+        var @event = _eventRepository.Retrieve(x => x.Id == eventDto.Id).SingleOrDefault();
 
         if (@event == null)
         {
@@ -54,13 +67,13 @@ internal class EventsService : IEventsService
         @event.Date = eventDto.Date;
 
         var newEvent = await _eventRepository.EditAsync(@event);
-
-        return newEvent.ToDto();
+         
+        return _mapper.Map<EventDto>(newEvent);
     }
 
     public async Task DeleteEventAsync(Guid id)
     {
-        var @event = _eventRepository.RetrieveAll().SingleOrDefault(x => x.Id == id);
+        var @event = _eventRepository.Retrieve(x => x.Id == id).SingleOrDefault();
 
         if (@event == null)
         {

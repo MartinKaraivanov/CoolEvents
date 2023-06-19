@@ -1,0 +1,44 @@
+﻿@page
+@model CoolEvents.WebApp.Pages.Tickets.YourTicketsIndexModel
+@{
+}
+
+<h1>Your Tickets</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p>Event</p>
+            </th>
+            <th>
+                <p>Photo</p>
+            </th>
+            <th>
+                <p>Date</p>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model.Tickets)
+        {
+            <tr>
+                <td>
+                    @ticket.Event.Name
+                </td>
+                <td>
+                    <img src="@ticket.Event.PhotoUrl" width="100" height="auto">
+                </td>
+                <td>
+                    @ticket.Event.Date.ToShortDateString();
+                </td>
+                <td>
+                    <a asp-page="./DeleteTicket" asp-route-id="@ticket.Id" asp-route-returnPage="YourTicketsIndex" style="color:red">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="../Index">Back</a>

@@ -2,7 +2,7 @@
 
 namespace CoolEvents.Data.Models;
 
-public class AppUser : IdentityUser
+public class AppUser : IdentityUser, IEntity
 {
 
     public required string FirstName { get; set; }

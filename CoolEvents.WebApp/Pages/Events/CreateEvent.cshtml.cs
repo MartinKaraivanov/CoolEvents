@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CoolEvents.WebApp.Pages.Events;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class CreateEventModel : PageModel
 {
     private readonly IEventsService _eventsService;
