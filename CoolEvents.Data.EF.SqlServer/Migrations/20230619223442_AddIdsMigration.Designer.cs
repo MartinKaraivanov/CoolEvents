@@ -4,6 +4,7 @@ using CoolEvents.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoolEvents.Data.EF.SqlServer.Migrations
 {
     [DbContext(typeof(CoolEventsDbContext))]
-    partial class CoolEventsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230619223442_AddIdsMigration")]
+    partial class AddIdsMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

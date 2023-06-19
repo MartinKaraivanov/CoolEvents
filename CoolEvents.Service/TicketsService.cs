@@ -1,7 +1,6 @@
 ﻿using CoolEvents.Data.Models;
 using CoolEvents.Data;
 using CoolEvents.Service.Models;
-using CoolEvents.Service.Mappings;
 using AutoMapper;
 
 namespace CoolEvents.Service;
@@ -9,27 +8,17 @@ namespace CoolEvents.Service;
 public class TicketsService : ITicketsService
 {
 	private readonly IRepository<Ticket> _ticketRepository;
-	private readonly IRepository<AppUser> _userRepository;
-	private readonly IRepository<Event> _eventRepository;
 	private readonly IMapper _mapper;
 
-	public TicketsService(IRepository<Ticket> ticketRepository, IRepository<AppUser> userRepository, IRepository<Event> eventRepository, IMapper mapper)
+	public TicketsService(IRepository<Ticket> ticketRepository, IMapper mapper)
 	{
 		_ticketRepository = ticketRepository;
-		_userRepository = userRepository;
-		_eventRepository = eventRepository;
 		_mapper = mapper;
 	}
 
 	public async Task<TicketDto> CreateTicketAsync(TicketDto ticketDto)
 	{
-		var user = _userRepository.Retrieve(x => x.Id == ticketDto.User.Id.ToString()).SingleOrDefault();
-        ArgumentNullException.ThrowIfNull(user);
-
-        var @event = _eventRepository.Retrieve(x => x.Id == ticketDto.Event.Id).SingleOrDefault();
-		ArgumentNullException.ThrowIfNull(@event);
-
-		Ticket ticket = new Ticket { Id = Guid.NewGuid(), Event = @event, User = user };
+		var ticket = new Ticket { Id = Guid.NewGuid(), EventId = ticketDto.Event.Id, UserId = ticketDto.User.Id};
 
 		var newTicket = await _ticketRepository.AddAsync(ticket);
 
