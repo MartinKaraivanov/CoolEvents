@@ -30,6 +30,11 @@ public class TicketsService : ITicketsService
 		return _ticketRepository.RetrieveMappedTo<TicketDto>(x => true);
 	}
 
+	public int GetNumberOfTickets()
+	{
+		return _ticketRepository.Count();
+	}
+
     public TicketDto GetTicketById(Guid id)
     {
         var ticket = _ticketRepository.RetrieveMappedTo<TicketDto>(x => x.Id == id).SingleOrDefault();

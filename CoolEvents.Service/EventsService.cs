@@ -52,6 +52,11 @@ internal class EventsService : IEventsService
         return e;
 	}
 
+    public int GetNumberOfEvents()
+    {
+        return _eventRepository.Count();
+    }
+
     public async Task<EventDto> UpdateEventAsync(EventDto eventDto)
     {
         var @event = _eventRepository.Retrieve(x => x.Id == eventDto.Id).SingleOrDefault();

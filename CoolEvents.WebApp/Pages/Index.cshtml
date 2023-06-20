@@ -15,4 +15,16 @@
             <a class="btn success" style="background:purple; color:white; border:purple" asp-page="./Users/UsersIndex">Users</a>
         }
     </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <a>Number of Events: @Model.EventCount</a>
+        </div>
+        <div>
+            <a>Number of Tickets Booked: @Model.TicketCount</a>
+        </div>
+        <div>
+            <a>Number of Users: @Model.UserCount</a>
+        </div>
+    }
 </div>

@@ -9,6 +9,19 @@
     <a asp-page = "./CreateEvent">Add New</a>
 }
 
+<br />
+
+<div>
+    <h3>Search Events By Name</h3>
+    <form method="post">
+        <input asp-for="SearchName" type="search" placeholder="Name" />
+
+        <button type="submit" class="btn success" style="border-color:gold; background-color:gold; color:white">Search</button>
+    </form>
+</div>
+
+<br />
+
 <table class="table">
     <thead>
         <tr>

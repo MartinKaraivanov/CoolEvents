@@ -13,7 +13,7 @@ public interface IEventsService
     IEnumerable<EventDto> GetAllEvents();
     IEnumerable<EventDto> GetEventsByNamePart(string namePart);
     EventDto GetEventById(Guid id);
-    //Task<IEnumerable<EventDto>> GetEventsByNameAsync(string name);
+    int GetNumberOfEvents();
     Task<EventDto> UpdateEventAsync(EventDto eventDto);
     Task DeleteEventAsync(Guid id);
 }

@@ -41,6 +41,11 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : clas
         return _dbContext.Set<TEntity>().Where(where).ToList();
     }
 
+    public int Count()
+    {
+        return _dbContext.Set<TEntity>().Count();
+    }
+
     public IEnumerable<T> RetrieveMappedTo<T>(Expression<Func<TEntity, bool>> where) where T : class
     {
         return _mapper.ProjectTo<T>(_dbContext.Set<TEntity>().Where(where));

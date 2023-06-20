@@ -19,6 +19,11 @@ public class UsersService : IUsersService
 		return _userRepository.RetrieveMappedTo<UserDto>(x => true);
 	}
 
+	public int GetNumberOfUsers()
+	{
+		return _userRepository.Count();
+	}
+
 	public UserDto GetUserById(Guid id)
 	{
 		var user = _userRepository.RetrieveMappedTo<UserDto>(x => x.Id == id.ToString()).SingleOrDefault();
