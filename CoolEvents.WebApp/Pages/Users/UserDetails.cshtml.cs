@@ -1,26 +1,26 @@
-using CoolEvents.Service;
 using CoolEvents.Service.Models;
+using CoolEvents.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace CoolEvents.WebApp.Pages.Users;
 
 [Authorize(Roles = "Admin")]
-public class UsersIndexModel : PageModel
+public class UserDetailsModel : PageModel
 {
-
     private readonly IUsersService _usersService;
 
-    public IEnumerable<UserEditDto> Users { get; set; } = new List<UserEditDto>();
+    public required UserEditDto UserEditModel { get; set; }
 
-    public UsersIndexModel(IUsersService usersService)
+    public UserDetailsModel(IUsersService usersService)
     {
         _usersService = usersService;
     }
 
-    public void OnGet()
+    public void OnGet(string id)
     {
-        Users = _usersService.GetAllUserEdits();
+        UserEditModel = _usersService.GetUserEditById(id);
     }
 }

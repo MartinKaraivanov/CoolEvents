@@ -11,5 +11,6 @@ public class MappingProfile : Profile
         CreateMap<AppUser, UserDto>();
         CreateMap<Event, EventDto>();
         CreateMap<Ticket, TicketDto>();
+        CreateMap<AppUser, UserEditDto>();
     }
 }
