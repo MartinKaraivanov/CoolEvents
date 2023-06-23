@@ -47,10 +47,15 @@ public class UsersService : IUsersService
             Email = userEditDto.Email,
             UserName = userEditDto.Email,
             FirstName = userEditDto.FirstName,
-            LastName = userEditDto.LastName,
+            LastName = userEditDto.LastName
         };
+        
+        var identityResult = await _userManager.CreateAsync(appUser, userEditDto.Password);
 
-        await _userManager.CreateAsync(appUser);
+        if (!identityResult.Succeeded)
+        {
+            throw new Exception($"Greshka: {identityResult.Errors.FirstOrDefault()}");
+        }
     }
 
     public IEnumerable<UserEditDto> GetAllUserEdits()
@@ -81,7 +86,9 @@ public class UsersService : IUsersService
         user.FirstName = userEditDto.FirstName;
         user.LastName = userEditDto.LastName;
 
-        await _userManager.UpdateAsync(user);
+        await _userManager.UpdateAsync(user); //todo: check result if succeeded
+        await _userManager.RemovePasswordAsync(user); 
+        await _userManager.AddPasswordAsync(user, userEditDto.Password);
     }
     public async Task DeleteUserEditAsync(string id)
     {
