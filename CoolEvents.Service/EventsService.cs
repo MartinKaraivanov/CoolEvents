@@ -1,8 +1,7 @@
-﻿using CoolEvents.Data;
+﻿using AutoMapper;
 using CoolEvents.Data.Models;
+using CoolEvents.Data.Repositories;
 using CoolEvents.Service.Models;
-using CoolEvents.Service.Mappings;
-using AutoMapper;
 
 namespace CoolEvents.Service;
 

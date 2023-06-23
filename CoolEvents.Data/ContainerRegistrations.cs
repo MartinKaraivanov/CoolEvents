@@ -1,7 +1,7 @@
-﻿using CoolEvents.Data.EF.Repositories;
+﻿using CoolEvents.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CoolEvents.Data.EF;
+namespace CoolEvents.Data;
 
 public static class ContainerRegistrations
 {

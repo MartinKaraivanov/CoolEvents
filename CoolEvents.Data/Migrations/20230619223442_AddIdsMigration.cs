@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace CoolEvents.Data.EF.SqlServer.Migrations
+namespace CoolEvents.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddIdsMigration : Migration

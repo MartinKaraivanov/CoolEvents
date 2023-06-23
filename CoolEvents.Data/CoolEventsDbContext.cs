@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoolEvents.Data.EF;
+namespace CoolEvents.Data;
 
 public class CoolEventsDbContext : IdentityDbContext<AppUser>
 {

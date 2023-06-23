@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using CoolEvents.Data.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace CoolEvents.Data.EF.Repositories;
+namespace CoolEvents.Data.Repositories;
 
 public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
 {

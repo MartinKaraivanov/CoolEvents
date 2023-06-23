@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.7" />
@@ -20,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CoolEvents.Data.EF.SqlServer\CoolEvents.Data.EF.SqlServer.csproj" />
-    <ProjectReference Include="..\CoolEvents.Data.EF\CoolEvents.Data.EF.csproj" />
+    <ProjectReference Include="..\CoolEvents.Data\CoolEvents.Data.csproj" />
     <ProjectReference Include="..\CoolEvents.Service.Models\CoolEvents.Service.Models.csproj" />
     <ProjectReference Include="..\CoolEvents.Service\CoolEvents.Service.csproj" />
   </ItemGroup>

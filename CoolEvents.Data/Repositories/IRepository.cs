@@ -1,7 +1,7 @@
 ﻿using CoolEvents.Data.Models;
 using System.Linq.Expressions;
 
-namespace CoolEvents.Data;
+namespace CoolEvents.Data.Repositories;
 
 public interface IRepository<TEntity> where TEntity : IEntity
 {

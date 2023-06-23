@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CoolEvents.Data.EF.SqlServer.Migrations
+namespace CoolEvents.Data.Migrations
 {
     /// <inheritdoc />
     public partial class CreateCoolEventsSchemaMigration : Migration
