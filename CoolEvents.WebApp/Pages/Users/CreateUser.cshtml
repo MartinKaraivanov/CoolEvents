@@ -19,10 +19,7 @@
 		<label asp-for="UserEditModel.LastName">Last Name</label>
 		<input asp-for="UserEditModel.LastName" type="text" placeholder="Last Name" required />
 	</div>
-	<div class="pb-2">
-		<label asp-for="UserEditModel.UserName">User Name</label>
-		<input asp-for="UserEditModel.UserName" type="text" rows="2" placeholder="Username" required />
-	</div>
+	<input asp-for="UserEditModel.UserName" type="hidden"/>
 	<div class="pb-2">
 		<label asp-for="UserEditModel.Password">Password</label>
 		<input asp-for="UserEditModel.Password" type="text" rows="2" placeholder="Password" required />

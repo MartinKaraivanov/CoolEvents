@@ -23,7 +23,7 @@ public class EditUserModel : PageModel
 	public void OnGet(string id)
 	{
 		UserEditModel = _usersService.GetUserEditById(id);
-		UserEditModel.Password = string.Empty;
+		UserEditModel.Password = "******";
 	}
 
 	public async Task<IActionResult> OnPostAsync()
