@@ -1,5 +1,6 @@
 using CoolEvents.Data;
 using CoolEvents.Data.Models;
+using CoolEvents.WebApp.Seed;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -12,7 +13,12 @@ builder.Services.AddDbContextFactory<CoolEventsDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services
+    .AddDefaultIdentity<AppUser>(
+        options =>
+        {
+            options.SignIn.RequireConfirmedAccount = true;
+        })    
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<CoolEventsDbContext>();
 builder.Services.AddRazorPages();
@@ -35,6 +41,8 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.SeedDatabase();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
